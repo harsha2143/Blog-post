@@ -1,0 +1,120 @@
+
+    <title>Admin Posts</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* background: linear-gradient(135deg, #FF8383, #FFFBCA, #A1D6CB); */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            /* display: flex; */
+            /* justify-content: center; */
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .viewpost {
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.119);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            text-align:left;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(84, 84, 84, 0.5);
+            margin: 3rem;
+        }
+        h2 {
+            font-size: 24px;
+            /* background: linear-gradient(90deg, #313030, #2216ff, #cc2525); */
+            /* -webkit-text-fill-color: transparent; */
+        }
+        .button {
+            padding: 10px 20px;
+            background: linear-gradient(90deg, #28a745, #00b894);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .button:hover {
+            background: linear-gradient(90deg, #00b894, #28a745);
+            transform: scale(1.05);
+        }
+        .admin-posts {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .admin-posts li {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 6px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .admin-posts a {
+            /* display: block; */
+            width: 100%;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+        .admin-posts li:hover {
+            background: linear-gradient(90deg, #007bffe5, #00c8ffe7);
+
+        }
+        .admin-post-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 0px;
+        }
+        .btn {
+            /* padding: 8px 12px; */
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+
+            
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #9694FF, #0000ff);
+            transform: scale(1.05);
+        }
+        .btn-delete {
+            background: linear-gradient(90deg, #ff3b4f, #ff2a3c);
+            color: #fff;
+        }
+        .btn-delete:hover {
+            background: linear-gradient(90deg, #ff4757, #dc3545);
+            transform: scale(1.08);
+        }
+    </style>
+
+    <div class="viewpost">
+        <div class="admin-title">
+            <h2>Posts</h2>
+            <a href="/add-post" class="button">+ Add New Post</a>
+        </div>
+        <ul class="admin-posts">
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/post/<%= post.id %>"><%= post.title %></a>
+                    <div class="admin-post-controls">
+                        <a href="/edit-post/<%= post.id %>" class="btn" style="background-color:#0000ffd1">Edit</a>
+                        <form action="/delete-post/<%= post._id %>?_method=DELETE" method="POST">
+                            <input type="submit" value="Delete" class="btn-delete btn">
+                        </form>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </div>

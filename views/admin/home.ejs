@@ -1,0 +1,158 @@
+<style>
+    body {
+  margin: 0;
+  padding: 0;
+  background: url('/img/img4.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: rgb(8, 8, 8);
+}
+
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: rgb(0, 0, 0);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .post-card {
+      position: relative;
+      padding: 25px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+      cursor: pointer;
+    }
+
+    .post-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 35px rgba(0, 255, 255, 0.3);
+    }
+
+    .post-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(135deg, rgba(0,255,255,0.2), rgba(255,0,255,0.2));
+      transform: rotate(25deg);
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .post-card:hover::before {
+      opacity: 1;
+      animation: pulse-glow 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+  .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0b0b0b;
+  /* background: linear-gradient(90deg, #0b0b0b, #0ff); */
+  background-color:#0b0b0b;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+
+.post-card:hover .post-title {
+  letter-spacing: 0.5px;
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: #070707;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+
+    .view-button {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .view-button a {
+      text-decoration: none;
+      background: linear-gradient(to right, #3b82f6, #8b5cf6);
+      padding: 12px 24px;
+      color: white;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+    }
+
+    .view-button a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.7);
+    }
+  </style>
+
+  <section>
+    <h1>✨ Trending Posts</h1>
+    <div class="card-grid">
+      <!-- Repeat this block for each post -->
+      <% data.forEach(post => { %>
+        <a href="/Post/<%= post._id %>" style="text-decoration: none;">
+          <div class="post-card">
+            <div class="post-header">
+              <h2 class="post-title"><%= post.title %></h2>
+              <p class="post-date">🗓️ <%= post.createdAt.toDateString() %></p>
+            </div>
+          </div>
+          
+        </a>
+      <% }) %>
+    </div>
+
+    <% if (nextpage !== null) { %>
+      <div class="view-button">
+        <a href="/home?page=<%= nextpage %>">View Older Posts →</a>
+      </div>
+    <% } %>
+  </section>
+

@@ -1,0 +1,30 @@
+<div class="author">
+    <h1 class="author_heading">Hi, <%= user.username %></h1>
+    <p class="author_body"><%= user.description %></p>
+</div>
+
+<% if (user.image) { %>
+    <img src="<%= user.image %>" alt="author" class="hero-img" width="981" height="528">
+<% } else { %>
+    <img src="/img/tony-stark-profile.png" alt="author" class="hero-img" width="981" height="528">
+<% } %>
+
+<a href="/edit-profile/<%= user._id %>" class="btn-2">Edit</a>
+
+<section class="articles">
+    <h1 class="articles_heading">Latest Posts</h1>
+    <ul class="articles-ul">
+            <% data.forEach(post => { %>
+                <li>
+                    <a href="/Post/<%=post._id%>">
+                        <span><%= post.title %></span>
+                        <span class="article-list_date"><%=post.createdAt.toDateString() %></span>
+                    </a>
+                </li>
+            <% }) %>
+    </ul>
+    <% if(nextpage !==null){ %>
+        <a href="/?page=<%= nextpage %>" class="pagination">&lt; View older Posts</a>  
+    <% } %>
+    
+</section>

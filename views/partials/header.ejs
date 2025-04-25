@@ -1,0 +1,68 @@
+<style>
+.hamburger {
+    font-size: 25px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.sidebar {
+    grid-area: menu;
+    position: fixed;
+    top: 53px;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: #f8f8f8;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid #7E7E7E7E;
+    padding: 15px 0;
+    z-index: 999;
+    transform: translateX(-100%); /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s ease, opacity 0.5s ease, visibility 0.5s;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #d9d8d8;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.sidebar.show {
+    transform: translateX(0); /* Slide in */
+    opacity: 1;
+    visibility: visible; /* Show sidebar when toggled */
+}
+
+</style>
+
+<header class="header">
+    <!-- Hamburger Icon -->
+    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+    <!-- Sidebar Menu (Options appear here) -->
+    <div class="sidebar" id="sidebarMenu">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dashboard">My Posts</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/logout">LogOut</a></li>
+        </ul>
+    </div>
+    <a href="/home" class="headerlogo">Blogee</a>
+
+    <div class="head_btn">
+        <button class="searchbtn">Search</button>
+        <img src="/img/tony-stark-profile.png" alt="profile" class="profilelogo">
+    </div>
+</header>

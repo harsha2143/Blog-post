@@ -1,0 +1,99 @@
+<h1 class="post-title-heading"><%= data.title %></h1>
+
+<div class="post-content-card">
+  <article class="article-content">
+    <%= data.body %>
+  </article>
+</div>
+
+  
+
+<style>
+/* Title Styling */
+.post-title-heading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  background: linear-gradient(to right, #00fff7, #8ab6ff, #f98ded);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+/* Content Card Styling */
+.post-content-card {
+  max-width: 1000px;
+  margin: 0 auto 80px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease-out;
+  transition: all 0.4s ease;
+}
+
+.post-content-card:hover {
+  box-shadow: 0 12px 45px rgba(169, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+/* Typography inside the article */
+.article-content {
+  font-size: 1.1rem;
+  color: #000000;
+  line-height: 1.8;
+  word-spacing: 1.5px;
+}
+
+.article-content p {
+  margin-bottom: 20px;
+}
+
+.article-content h2, 
+.article-content h3 {
+  margin: 30px 0 15px;
+  background: linear-gradient(to right, #3cf, #f0f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.article-content a {
+  color: #0ff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.article-content a:hover {
+  color: #fff;
+}
+
+.post-title-heading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  background: linear-gradient(to right, #000000, #0062ff, #f98ded);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+
+</style>

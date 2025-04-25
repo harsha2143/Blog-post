@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Link to your existing CSS -->
+</head>
+<body>
+    <div class="author">
+        <h1 class="author_heading">Edit Profile</h1>
+
+        <form action="/edit-profile/<%= user._id %>" method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                value="<%= user.name %>" 
+                required 
+            />
+
+            <label for="description">Description:</label>
+            <textarea 
+                id="description" 
+                name="description" 
+                rows="3" 
+                required
+            ><%= user.description %></textarea>
+
+            <label for="image">Profile Image:</label>
+            <input 
+                type="file" 
+                id="image" 
+                name="image"
+            />
+
+            <!-- Display Current Profile Image -->
+            <% if (user.image) { %>
+                <p>Current Image:</p>
+                <img 
+                    src="<%= user.image %>" 
+                    alt="Profile Image" 
+                    class="hero-img" 
+                    width="981" 
+                    height="528"
+                >
+            <% } %>
+
+            <button type="submit" class="btn-2">Update Profile</button>
+        </form>
+
+        <a href="/dashboard" class="btn-2">Back to Dashboard</a>
+    </div>
+</body>
+</html>
